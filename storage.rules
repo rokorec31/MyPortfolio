@@ -1,0 +1,21 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Project images: public read (portfolio site displays them),
+    // write restricted to the verified admin account only.
+    match /projects/{fileName} {
+      allow read: if true;
+      allow write: if request.auth != null
+        && request.auth.token.email == 'rokorec31@gmail.com'
+        && request.auth.token.email_verified == true
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+
+    // Deny everything else.
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

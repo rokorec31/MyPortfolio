@@ -1,0 +1,20 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Public portfolio content: anyone can read.
+    // Writes are restricted to the verified admin Google account only —
+    // this is the real security boundary (client-side checks are UI only).
+    match /projects/{projectId} {
+      allow read: if true;
+      allow create, update, delete: if request.auth != null
+        && request.auth.token.email == 'rokorec31@gmail.com'
+        && request.auth.token.email_verified == true;
+    }
+
+    // Deny everything else by default.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
