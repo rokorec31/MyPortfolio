@@ -2,8 +2,20 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import Magnetic from "./Magnetic";
 
 const stats = [
+  {
+    label: "App Exp.",
+    value: 8,
+    suffix: " years",
+    icon: (
+      <>
+        <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+        <path d="M12 18h.01" />
+      </>
+    ),
+  },
   {
     label: "Web Exp.",
     value: 6,
@@ -13,17 +25,6 @@ const stats = [
         <circle cx="12" cy="12" r="10" />
         <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
         <path d="M2 12h20" />
-      </>
-    ),
-  },
-  {
-    label: "APP Exp.",
-    value: 3,
-    suffix: " years",
-    icon: (
-      <>
-        <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
-        <path d="M12 18h.01" />
       </>
     ),
   },
@@ -51,30 +52,19 @@ const stats = [
   },
 ];
 
-const skillsRow1 = [
-  "React",
-  "Next.js",
-  "Vue.js",
-  "TypeScript",
+const coreSkills = [
   "Swift",
-  "LiveKit",
-  "LangChain",
-  "AI Agent",
-  "Python",
-  "Node.js",
-];
-
-const skillsRow2 = [
-  "Tailwind CSS",
   "Kotlin",
-  "Firebase",
+  "Java",
+  "Flutter",
+  "React",
+  "C#",
+  "ASP.NET",
+  "Golang",
+  "Python",
+  "AI Agent",
   "AWS",
-  "Supabase",
-  "WebRTC",
-  "PostgreSQL",
   "Docker",
-  "Figma",
-  "Git",
 ];
 
 function CountUp({ to, suffix }: { to: number; suffix: string }) {
@@ -114,7 +104,7 @@ function CountUp({ to, suffix }: { to: number; suffix: string }) {
 
 function TagPill({ label }: { label: string }) {
   return (
-    <span className="whitespace-nowrap rounded-full border border-[#1a1712]/20 bg-[#fffdf8] px-4 py-1.5 text-sm text-[#6b6157] transition-colors hover:border-[#e85d3d] hover:text-[#e85d3d]">
+    <span className="whitespace-nowrap rounded-full border border-[#1a1712]/20 bg-[#fffdf8] px-4 py-1.5 text-sm text-[#6b6157]">
       {label}
     </span>
   );
@@ -140,7 +130,7 @@ export default function Hero() {
           <h1 className="font-display text-5xl font-semibold tracking-tight sm:text-7xl md:text-8xl lg:text-9xl">
             Ethan
             <span className="accent-text">.</span>
-            <span className="ml-3 inline-block align-baseline font-sans text-xl font-light tracking-wide text-[#6b6157] sm:text-2xl md:ml-5 md:text-3xl">
+            <span className="font-serif-tc ml-3 inline-block align-baseline text-xl font-normal tracking-wide text-[#6b6157] sm:text-2xl md:ml-5 md:text-3xl">
               洪毅
             </span>
           </h1>
@@ -188,54 +178,47 @@ export default function Hero() {
           ))}
         </div>
 
-        {/* Skill marquee */}
-        <div className="fade-in-up delay-5 mb-12 space-y-3">
-          <div className="marquee-mask flex">
-            <div className="marquee-track">
-              {[...skillsRow1, ...skillsRow1].map((s, i) => (
-                <TagPill key={`${s}-${i}`} label={s} />
-              ))}
-            </div>
-          </div>
-          <div className="marquee-mask flex">
-            <div className="marquee-track reverse">
-              {[...skillsRow2, ...skillsRow2].map((s, i) => (
-                <TagPill key={`${s}-${i}`} label={s} />
-              ))}
-            </div>
-          </div>
+        {/* Core skills */}
+        <div className="fade-in-up delay-5 mb-12 flex flex-wrap gap-3">
+          {coreSkills.map((s) => (
+            <TagPill key={s} label={s} />
+          ))}
         </div>
 
         {/* CTA */}
         <div className="fade-in-up delay-6 flex flex-wrap items-center gap-5">
-          <Link
-            href="/projects"
-            className="group inline-flex items-center gap-2 rounded-full bg-[#1a1712] px-8 py-3.5 text-base font-medium text-[#fffdf8] transition-all duration-300 hover:bg-[#e85d3d] active:translate-y-px"
-          >
-            View Projects
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="-rotate-90 transition-transform duration-300 group-hover:translate-x-1 group-hover:-rotate-90"
-              aria-hidden
+          <Magnetic>
+            <Link
+              href="/projects"
+              className="group inline-flex items-center gap-2 rounded-full bg-[#1a1712] px-8 py-3.5 text-base font-medium text-[#fffdf8] transition-all duration-300 hover:bg-[#e85d3d] active:translate-y-px"
             >
-              <path d="M12 5v14" />
-              <path d="m19 12-7 7-7-7" />
-            </svg>
-          </Link>
-          <Link
-            href="/about"
-            className="rounded-full border border-[#1a1712]/25 px-8 py-3.5 text-base font-medium text-[#1a1712] transition-all duration-300 hover:border-[#e85d3d] hover:text-[#e85d3d] active:translate-y-px"
-          >
-            About Me
-          </Link>
+              View Projects
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="-rotate-90 transition-transform duration-300 group-hover:translate-x-1 group-hover:-rotate-90"
+                aria-hidden
+              >
+                <path d="M12 5v14" />
+                <path d="m19 12-7 7-7-7" />
+              </svg>
+            </Link>
+          </Magnetic>
+          <Magnetic>
+            <Link
+              href="/about"
+              className="inline-block rounded-full border border-[#1a1712]/25 px-8 py-3.5 text-base font-medium text-[#1a1712] transition-all duration-300 hover:border-[#e85d3d] hover:text-[#e85d3d] active:translate-y-px"
+            >
+              About Me
+            </Link>
+          </Magnetic>
         </div>
       </div>
     </section>

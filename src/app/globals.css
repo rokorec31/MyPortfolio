@@ -82,44 +82,14 @@ body {
 
 /* ---------- Serif display headings ---------- */
 .font-display {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-fraunces), var(--font-noto-serif-tc), Georgia, serif;
 }
 
-/* ---------- Skill tag marquee ---------- */
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+/* ---------- Chinese serif (pairs with Fraunces) ---------- */
+.font-serif-tc {
+  font-family: var(--font-noto-serif-tc), serif;
 }
-.marquee-track {
-  display: flex;
-  gap: 0.75rem;
-  width: max-content;
-  animation: marquee 40s linear infinite;
-}
-.marquee-track.reverse {
-  animation-direction: reverse;
-}
-.marquee-mask {
-  overflow: hidden;
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent,
-    black 10%,
-    black 90%,
-    transparent
-  );
-}
+
 
 /* ---------- Scroll hint (traveling line) ---------- */
 @keyframes scroll-line {

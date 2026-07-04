@@ -69,14 +69,46 @@ export default function AboutPage() {
 
           <Reveal delay={0.1}>
             <div className="paper-card relative overflow-hidden rounded-2xl p-8 md:p-10">
-              <p className="relative z-10 mb-8 text-lg leading-relaxed text-[#3d372f]">
-                I&apos;m Ethan (洪毅), a full-stack developer who enjoys turning
-                ideas into polished, production-ready products. My work spans
-                modern web apps, native iOS apps, and AI-powered tools — from
-                pixel-perfect interfaces to scalable backends. When I&apos;m
-                not coding, I write about software architecture and contribute
-                to open source.
-              </p>
+              <div className="relative z-10 mb-8 space-y-5 text-lg leading-relaxed text-[#3d372f]">
+                <p>
+                  I&apos;m Ethan (洪毅). I currently manage an application
+                  software department, leading development and technical
+                  decisions across cloud, mobile apps, and hardware
+                  integration. Over the past year my team has shipped more
+                  than 200 software releases. To sustain that cadence, I
+                  brought AI-assisted development tools — GitHub Copilot,
+                  Antigravity, Claude Code — into our daily workflow, letting
+                  AI handle repetitive boilerplate and documentation so
+                  engineers can stay focused on core business logic and
+                  quality keeps pace with release frequency.
+                </p>
+                <p>
+                  My background spans native mobile apps and web development
+                  through to IoT and cloud system architecture. What I care
+                  about most is system stability and development efficiency.
+                  While optimizing a firmware update tool, I re-architected
+                  the update framework and packaged its core logic as an SDK,
+                  cutting new-device integration time by 70%. In an IoT
+                  project, to get real-time interaction between devices and
+                  controllers, we weighed bandwidth against latency and chose
+                  MQTT paired with WebSocket — eliminating the delay and
+                  server load of traditional HTTP polling. I also lean on AI
+                  tools for first-pass trade-off analysis and PoC code
+                  generation, sharply compressing technical evaluation time
+                  so the team can move faster on business logic and
+                  decisions.
+                </p>
+                <p>
+                  My use of AI goes beyond personal productivity — I work to
+                  integrate it into the whole team&apos;s development process:
+                  auto-generating code review checklists, drafting API
+                  documentation, and helping new members quickly understand
+                  existing architecture. The goal is always the same: within
+                  real resource and time constraints, find the right
+                  human–AI collaboration model that keeps systems
+                  maintainable and extensible for the long run.
+                </p>
+              </div>
               <div className="relative z-10 flex flex-wrap gap-4">
                 <a
                   href="mailto:rokorec31@gmail.com"
@@ -98,29 +130,6 @@ export default function AboutPage() {
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                   </svg>
                   rokorec31@gmail.com
-                </a>
-                <a
-                  href="https://github.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-[#1a1712]/20 bg-[#faf6f0] px-4 py-2 text-sm text-[#3d372f] transition-colors hover:border-[#e85d3d] hover:text-[#e85d3d]"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden
-                  >
-                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                    <path d="M9 18c-4.51 2-5-2-7-2" />
-                  </svg>
-                  GitHub
                 </a>
               </div>
             </div>

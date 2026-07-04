@@ -24,8 +24,8 @@ export default function ProjectsPage() {
         Selected <span className="accent-text">Projects</span>
       </h1>
       <p className="fade-in-up delay-1 mt-4 max-w-xl text-[#6b6157]">
-        A selection of things I&apos;ve built — web apps, mobile apps, and open
-        source tools.
+        Web platforms, mobile and desktop apps, and AI-powered tools — built
+        end to end, from interface to infrastructure.
       </p>
 
       {loading ? (
