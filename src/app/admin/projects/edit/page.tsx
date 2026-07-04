@@ -1,22 +1,39 @@
 "use client";
 
-import { use, useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import ProjectForm from "@/components/ProjectForm";
 import { getProjectById } from "@/lib/projectsRepo";
 import type { Project } from "@/lib/projects";
 
-export default function EditProjectPage({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const { id } = use(params);
+export default function EditProjectPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-[50vh] items-center justify-center text-sm text-[#798093]">
+          <div className="mr-3 size-4 animate-spin rounded-full border-2 border-[#7796ff]/30 border-t-[#7796ff]" />
+          Loading project...
+        </div>
+      }
+    >
+      <EditProjectContent />
+    </Suspense>
+  );
+}
+
+function EditProjectContent() {
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id") ?? "";
   const [project, setProject] = useState<Project | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "missing">(
     "loading",
   );
 
   useEffect(() => {
+    if (!id) {
+      setStatus("missing");
+      return;
+    }
     getProjectById(id)
       .then((p) => {
         if (p) {

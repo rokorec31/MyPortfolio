@@ -4,7 +4,7 @@ import type { Project } from "@/lib/projects";
 export default function ProjectCard({ project }: { project: Project }) {
   return (
     <Link
-      href={`/projects/${project.id}`}
+      href={`/projects/view?id=${project.id}`}
       className="glass-card group block overflow-hidden rounded-2xl hover:-translate-y-1"
     >
       <div className="relative aspect-[16/10] overflow-hidden">

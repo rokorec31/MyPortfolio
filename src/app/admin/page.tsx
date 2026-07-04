@@ -189,7 +189,7 @@ export default function AdminPage() {
                     <td className="px-6 py-4">
                       <div className="flex justify-end gap-2">
                         <Link
-                          href={`/admin/projects/${p.id}/edit`}
+                          href={`/admin/projects/edit?id=${p.id}`}
                           className="rounded-full border border-white/15 px-4 py-1.5 text-xs font-medium text-white transition-colors hover:bg-white/10"
                         >
                           編輯
