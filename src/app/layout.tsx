@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import ScrollHint from "@/components/ScrollHint";
 import { AuthProvider } from "@/context/AuthContext";
 
 const geistSans = Geist({
@@ -42,6 +43,7 @@ export default function RootLayout({
           <footer className="border-t border-[#1a1712]/10 py-8 text-center text-sm text-[#6b6157]">
             © {new Date().getFullYear()} Ethan. All rights reserved.
           </footer>
+          <ScrollHint />
         </AuthProvider>
       </body>
     </html>

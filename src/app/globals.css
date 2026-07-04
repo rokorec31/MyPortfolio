@@ -121,20 +121,17 @@ body {
   );
 }
 
-/* ---------- Scroll indicator ---------- */
-@keyframes scroll-dot {
-  0%,
-  100% {
-    transform: translateY(0);
-    opacity: 1;
+/* ---------- Scroll hint (traveling line) ---------- */
+@keyframes scroll-line {
+  0% {
+    transform: translateY(-100%);
   }
-  50% {
-    transform: translateY(10px);
-    opacity: 0.4;
+  100% {
+    transform: translateY(100%);
   }
 }
-.scroll-dot {
-  animation: scroll-dot 1.8s ease-in-out infinite;
+.scroll-line {
+  animation: scroll-line 1.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
 /* ---------- Entrance animations ---------- */

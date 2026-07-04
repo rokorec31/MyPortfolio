@@ -4,10 +4,51 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 const stats = [
-  { label: "Web Exp.", value: 6, suffix: " years" },
-  { label: "APP Exp.", value: 3, suffix: " years" },
-  { label: "AI Exp.", value: 2, suffix: " years" },
-  { label: "Projects", value: 12, suffix: "+" },
+  {
+    label: "Web Exp.",
+    value: 6,
+    suffix: " years",
+    icon: (
+      <>
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+        <path d="M2 12h20" />
+      </>
+    ),
+  },
+  {
+    label: "APP Exp.",
+    value: 3,
+    suffix: " years",
+    icon: (
+      <>
+        <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
+        <path d="M12 18h.01" />
+      </>
+    ),
+  },
+  {
+    label: "AI Exp.",
+    value: 2,
+    suffix: " years",
+    icon: (
+      <>
+        <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+        <path d="M20 3v4" />
+        <path d="M22 5h-4" />
+      </>
+    ),
+  },
+  {
+    label: "Projects",
+    value: 12,
+    suffix: "+",
+    icon: (
+      <>
+        <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />
+      </>
+    ),
+  },
 ];
 
 const skillsRow1 = [
@@ -81,7 +122,7 @@ function TagPill({ label }: { label: string }) {
 
 export default function Hero() {
   return (
-    <section className="relative -mt-20 flex min-h-[100dvh] flex-col justify-center overflow-hidden">
+    <section className="relative -mt-20 flex min-h-[100dvh] flex-col justify-center overflow-hidden pb-24 pt-28 md:py-20">
       <div className="relative mx-auto w-full max-w-6xl px-6">
         {/* Kicker */}
         <div className="fade-in-up mb-6 flex items-center gap-3">
@@ -120,10 +161,22 @@ export default function Hero() {
               key={stat.label}
               className={`paper-card fade-in-up rounded-xl p-4 delay-${i + 3}`}
             >
-              <div className="mb-2 flex items-baseline justify-between">
-                <span className="font-display text-sm italic text-[#e85d3d]">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+              <div className="mb-2 flex items-center justify-between">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-[#e85d3d]"
+                  aria-hidden
+                >
+                  {stat.icon}
+                </svg>
                 <span className="text-xs font-medium uppercase tracking-wider text-[#6b6157]/70">
                   {stat.label}
                 </span>
@@ -183,18 +236,6 @@ export default function Hero() {
           >
             About Me
           </Link>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="fade-in-up delay-6 absolute bottom-10 left-1/2 -translate-x-1/2">
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-xs font-medium uppercase tracking-[0.2em] text-[#6b6157]/60">
-            Scroll
-          </span>
-          <div className="flex h-8 w-5 items-start justify-center rounded-full border border-[#1a1712]/25 p-1">
-            <div className="scroll-dot size-1.5 rounded-full bg-[#e85d3d]" />
-          </div>
         </div>
       </div>
     </section>
