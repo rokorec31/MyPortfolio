@@ -22,6 +22,7 @@ export interface ProjectInput {
   content: string;
   tags: string[];
   imageUrl: string;
+  imageBlur: string;
 }
 
 function toProject(id: string, data: Record<string, unknown>): Project {
@@ -33,6 +34,7 @@ function toProject(id: string, data: Record<string, unknown>): Project {
     content: (data.content as string) ?? "",
     tags: (data.tags as string[]) ?? [],
     imageUrl: (data.imageUrl as string) ?? "",
+    imageBlur: (data.imageBlur as string) ?? "",
   };
 }
 

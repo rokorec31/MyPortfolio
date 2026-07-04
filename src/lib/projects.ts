@@ -6,6 +6,7 @@ export interface Project {
   content: string; // Markdown
   tags: string[];
   imageUrl: string;
+  imageBlur?: string; // tiny base64 preview for blur-up loading
 }
 
 // Mock data — will be replaced by Firestore in Stage 4

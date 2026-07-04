@@ -50,7 +50,7 @@ export default function AdminPage() {
     try {
       for (const p of mockProjects) {
         const { id: _id, ...input } = p;
-        await createProject(input);
+        await createProject({ ...input, imageBlur: input.imageBlur ?? "" });
       }
       await load();
     } catch (e) {

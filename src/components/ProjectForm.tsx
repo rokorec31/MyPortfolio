@@ -10,6 +10,7 @@ import {
 } from "@/lib/projectsRepo";
 import {
   deleteImageByUrl,
+  makeBlurPlaceholder,
   uploadProjectImage,
   validateImageFile,
 } from "@/lib/uploadImage";
@@ -27,6 +28,7 @@ export default function ProjectForm({ project }: { project?: Project }) {
   const [content, setContent] = useState(project?.content ?? "");
   const [tags, setTags] = useState(project?.tags.join(", ") ?? "");
   const [imageUrl, setImageUrl] = useState(project?.imageUrl ?? "");
+  const [imageBlur, setImageBlur] = useState(project?.imageBlur ?? "");
   const [imageMode, setImageMode] = useState<"upload" | "url">("upload");
   const [uploadProgress, setUploadProgress] = useState<number | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -49,6 +51,7 @@ export default function ProjectForm({ project }: { project?: Project }) {
     try {
       const url = await uploadProjectImage(file, setUploadProgress);
       setImageUrl(url);
+      setImageBlur(await makeBlurPlaceholder(file));
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
     } finally {
@@ -77,6 +80,7 @@ export default function ProjectForm({ project }: { project?: Project }) {
         .map((t) => t.trim())
         .filter(Boolean),
       imageUrl: imageUrl.trim(),
+      imageBlur: imageUrl.trim() ? imageBlur : "",
     };
 
     setSaving(true);
@@ -233,7 +237,10 @@ export default function ProjectForm({ project }: { project?: Project }) {
             <input
               type="url"
               value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
+              onChange={(e) => {
+                setImageUrl(e.target.value);
+                setImageBlur(""); // can't generate a preview for external URLs
+              }}
               placeholder="https://example.com/image.jpg"
               className={inputClass}
             />
@@ -252,7 +259,10 @@ export default function ProjectForm({ project }: { project?: Project }) {
           />
           <button
             type="button"
-            onClick={() => setImageUrl("")}
+            onClick={() => {
+              setImageUrl("");
+              setImageBlur("");
+            }}
             className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full border border-[#ff6568]/40 bg-black/70 px-3 py-1.5 text-xs font-medium text-[#ff6568] backdrop-blur transition-colors hover:bg-[#ff6568]/20"
           >
             <svg

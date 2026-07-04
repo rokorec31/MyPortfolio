@@ -295,6 +295,18 @@ body {
   transform: translateY(0) scale(1);
 }
 
+/* ---------- Blur-up image loading ---------- */
+.img-blur-up {
+  /* transform entry keeps the card hover zoom (transition-transform
+     would be overridden by this unlayered rule otherwise) */
+  transition:
+    filter 0.5s ease,
+    transform 0.7s cubic-bezier(0, 0, 0.2, 1);
+}
+.img-loading {
+  filter: blur(16px);
+}
+
 /* ---------- Markdown content ---------- */
 .markdown-body {
   color: #c3c8d6;

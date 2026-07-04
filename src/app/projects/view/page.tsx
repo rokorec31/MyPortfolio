@@ -6,6 +6,7 @@ import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import type { Project } from "@/lib/projects";
 import { getProjectById } from "@/lib/projectsRepo";
+import BlurImage from "@/components/BlurImage";
 
 export default function ProjectDetailPage() {
   return (
@@ -29,6 +30,7 @@ function ProjectDetailContent() {
   const [status, setStatus] = useState<"loading" | "ready" | "missing">(
     "loading",
   );
+  const [imageFailed, setImageFailed] = useState(false);
 
   useEffect(() => {
     if (!id) {
@@ -100,12 +102,13 @@ function ProjectDetailContent() {
         {project.description}
       </p>
 
-      {project.imageUrl && (
+      {project.imageUrl && !imageFailed && (
         <div className="fade-in-up delay-3 mt-10 overflow-hidden rounded-2xl border border-white/10">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <BlurImage
             src={project.imageUrl}
             alt={project.title}
+            blur={project.imageBlur}
+            onError={() => setImageFailed(true)}
             className="w-full object-cover"
           />
         </div>
