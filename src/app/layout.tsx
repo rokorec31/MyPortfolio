@@ -21,7 +21,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Ethan | Portfolio",
+  title: "Ethan 洪毅 | Full-stack Developer",
   description: "Personal portfolio — projects, experiments, and writing.",
 };
 
