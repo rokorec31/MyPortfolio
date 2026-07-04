@@ -20,23 +20,23 @@ export default function ProjectsPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-16 md:py-24">
-      <h1 className="fade-in-up text-4xl font-bold tracking-tight">
-        <span className="gradient-text glow-text">Projects</span>
+      <h1 className="fade-in-up font-display text-4xl font-semibold tracking-tight">
+        Selected <span className="accent-text">Projects</span>
       </h1>
-      <p className="fade-in-up delay-1 mt-4 max-w-xl text-[#798093]">
+      <p className="fade-in-up delay-1 mt-4 max-w-xl text-[#6b6157]">
         A selection of things I&apos;ve built — web apps, mobile apps, and open
         source tools.
       </p>
 
       {loading ? (
-        <div className="flex items-center gap-3 py-24 text-sm text-[#798093]">
-          <div className="size-4 animate-spin rounded-full border-2 border-[#7796ff]/30 border-t-[#7796ff]" />
+        <div className="flex items-center gap-3 py-24 text-sm text-[#6b6157]">
+          <div className="size-4 animate-spin rounded-full border-2 border-[#e85d3d]/30 border-t-[#e85d3d]" />
           Loading projects...
         </div>
       ) : error ? (
-        <p className="py-24 text-sm text-[#ff6568]">{error}</p>
+        <p className="py-24 text-sm text-[#c73a2a]">{error}</p>
       ) : projects.length === 0 ? (
-        <p className="py-24 text-sm text-[#798093]">No projects yet.</p>
+        <p className="py-24 text-sm text-[#6b6157]">No projects yet.</p>
       ) : (
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, i) => (

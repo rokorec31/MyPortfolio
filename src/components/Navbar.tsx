@@ -30,15 +30,18 @@ export default function Navbar() {
       <nav
         className={`mx-auto flex max-w-5xl items-center justify-between rounded-2xl border px-6 py-3 transition-all duration-500 ${
           scrolled
-            ? "mx-4 border-white/10 bg-[#04050d]/70 shadow-lg shadow-black/20 backdrop-blur-md sm:mx-6 lg:mx-auto"
+            ? "mx-4 border-[#1a1712]/15 bg-[#faf6f0]/85 shadow-lg shadow-[#1a1712]/5 backdrop-blur-md sm:mx-6 lg:mx-auto"
             : "border-transparent bg-transparent"
         }`}
       >
         {/* Logo + tagline */}
         <div className="flex items-center">
-          <Link href="/" className="group relative z-10 flex flex-col">
-            <span className="text-lg font-bold tracking-tight">
-              Ethan<span className="gradient-text">.</span>
+          <Link href="/" className="group relative z-10 flex items-center gap-2.5">
+            <span className="font-display flex size-9 items-center justify-center rounded-full border-[1.5px] border-[#1a1712] text-lg font-semibold italic leading-none transition-colors duration-300 group-hover:border-[#e85d3d] group-hover:text-[#e85d3d]">
+              E.
+            </span>
+            <span className="font-display text-lg font-semibold tracking-tight">
+              Ethan
             </span>
           </Link>
           <div
@@ -47,7 +50,7 @@ export default function Navbar() {
             }`}
           >
             <span
-              className="block text-[10px] font-medium uppercase tracking-[0.2em] text-[#798093]/70 transition-all duration-700"
+              className="block text-[10px] font-medium uppercase tracking-[0.2em] text-[#6b6157]/80 transition-all duration-700"
               style={
                 mounted
                   ? { opacity: 1, filter: "blur(0)", transform: "translateY(0)" }
@@ -69,7 +72,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="line-glow relative rounded-lg px-4 py-2 text-sm font-medium text-[#798093] transition-colors hover:text-[#eceef5]"
+              className="line-glow relative rounded-lg px-4 py-2 text-sm font-medium text-[#6b6157] transition-colors hover:text-[#1a1712]"
             >
               {link.label}
             </Link>
@@ -80,7 +83,7 @@ export default function Navbar() {
         <button
           onClick={() => setMenuOpen((v) => !v)}
           aria-label="Toggle menu"
-          className="relative z-10 flex size-10 items-center justify-center rounded-xl border border-white/10 bg-[#04050d]/50 backdrop-blur-md md:hidden"
+          className="relative z-10 flex size-10 items-center justify-center rounded-xl border border-[#1a1712]/15 bg-[#fffdf8]/70 backdrop-blur-md md:hidden"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +116,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`mx-4 mt-2 overflow-hidden rounded-2xl border border-white/10 bg-[#04050d]/90 backdrop-blur-xl transition-all duration-300 md:hidden ${
+        className={`mx-4 mt-2 overflow-hidden rounded-2xl border border-[#1a1712]/15 bg-[#fffdf8]/95 backdrop-blur-xl transition-all duration-300 md:hidden ${
           menuOpen ? "max-h-60 opacity-100" : "max-h-0 border-transparent opacity-0"
         }`}
       >
@@ -123,7 +126,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="rounded-lg px-4 py-3 text-sm font-medium text-[#798093] transition-colors hover:bg-white/5 hover:text-[#eceef5]"
+              className="rounded-lg px-4 py-3 text-sm font-medium text-[#6b6157] transition-colors hover:bg-[#1a1712]/5 hover:text-[#1a1712]"
             >
               {link.label}
             </Link>

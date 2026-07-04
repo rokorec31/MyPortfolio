@@ -4,12 +4,12 @@ import BlurImage from "@/components/BlurImage";
 
 function ImagePlaceholder() {
   return (
-    <div className="flex h-full w-full items-center justify-center bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(84,113,245,0.15),transparent)] transition-transform duration-700 ease-out group-hover:scale-105">
+    <div className="flex h-full w-full items-center justify-center bg-[#f0e9df] transition-transform duration-700 ease-out group-hover:scale-105">
       <div
-        className="absolute inset-0 opacity-[0.04]"
+        className="absolute inset-0 opacity-[0.06]"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(119,150,255,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(119,150,255,0.4) 1px, transparent 1px)",
+            "linear-gradient(rgba(26,23,18,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(26,23,18,0.4) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         }}
       />
@@ -23,7 +23,7 @@ function ImagePlaceholder() {
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="text-[#7796ff]/40 transition-colors duration-500 group-hover:text-[#7796ff]/60"
+        className="text-[#e85d3d]/40 transition-colors duration-500 group-hover:text-[#e85d3d]/70"
         aria-hidden
       >
         <path d="m18 16 4-4-4-4" />
@@ -38,39 +38,36 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <Link
       href={`/projects/view?id=${project.id}`}
-      className="glass-card group block overflow-hidden rounded-2xl hover:-translate-y-1"
+      className="paper-card group block overflow-hidden rounded-xl"
     >
-      <div className="relative aspect-[16/10] overflow-hidden">
+      <div className="relative aspect-[16/10] overflow-hidden border-b border-[#1a1712]/10">
         {project.imageUrl ? (
-          <>
-            <BlurImage
-              src={project.imageUrl}
-              alt={project.title}
-              blur={project.imageBlur}
-              fallback={<ImagePlaceholder />}
-              className="h-full w-full object-cover group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-          </>
+          <BlurImage
+            src={project.imageUrl}
+            alt={project.title}
+            blur={project.imageBlur}
+            fallback={<ImagePlaceholder />}
+            className="h-full w-full object-cover group-hover:scale-105"
+          />
         ) : (
           <ImagePlaceholder />
         )}
-        <span className="absolute right-3 top-3 rounded-full border border-white/10 bg-black/60 px-3 py-1 text-xs font-medium text-[#eceef5] backdrop-blur">
+        <span className="font-display absolute right-3 top-3 rounded-full border border-[#1a1712]/20 bg-[#fffdf8]/90 px-3 py-1 text-xs font-medium italic text-[#1a1712] backdrop-blur">
           {project.year}
         </span>
       </div>
       <div className="p-5">
-        <h3 className="text-lg font-semibold text-white transition-colors duration-300 group-hover:text-[#7796ff]">
+        <h3 className="font-display text-lg font-semibold text-[#1a1712] transition-colors duration-300 group-hover:text-[#e85d3d]">
           {project.title}
         </h3>
-        <p className="mt-2 line-clamp-2 text-sm text-[#798093]">
+        <p className="mt-2 line-clamp-2 text-sm text-[#6b6157]">
           {project.description}
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-[#7796ff]/20 bg-[#7796ff]/10 px-2.5 py-0.5 text-xs text-[#a8bcff]"
+              className="rounded-full border border-[#2f5d50]/25 bg-[#2f5d50]/8 px-2.5 py-0.5 text-xs text-[#2f5d50]"
             >
               {tag}
             </span>

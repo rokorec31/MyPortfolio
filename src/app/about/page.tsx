@@ -44,7 +44,7 @@ const skillGroups: { title: string; tags: string[] }[] = [
 
 function Badge({ label }: { label: string }) {
   return (
-    <span className="inline-flex w-fit shrink-0 items-center rounded-full border border-white/10 bg-[#04050d]/40 px-3 py-1.5 text-sm text-[#c3c8d6] backdrop-blur-md transition-all hover:border-[#7796ff]/30 hover:bg-[#7796ff]/10">
+    <span className="inline-flex w-fit shrink-0 items-center rounded-full border border-[#1a1712]/15 bg-[#faf6f0] px-3 py-1.5 text-sm text-[#3d372f] transition-all hover:border-[#e85d3d] hover:text-[#e85d3d]">
       {label}
     </span>
   );
@@ -58,20 +58,18 @@ export default function AboutPage() {
         <div className="mx-auto max-w-4xl px-6">
           <Reveal>
             <div className="mb-14 text-center md:mb-20">
-              <h1 className="text-4xl font-bold tracking-tight md:text-5xl">
-                <span className="gradient-text">About Me</span>
+              <h1 className="font-display text-4xl font-semibold tracking-tight md:text-5xl">
+                About <span className="accent-text">Me</span>
               </h1>
-              <p className="mt-4 text-lg text-[#798093] md:text-xl">
+              <p className="mt-4 text-lg text-[#6b6157] md:text-xl">
                 Full-stack Developer
               </p>
             </div>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="glass-card relative overflow-hidden rounded-3xl p-8 md:p-10">
-              {/* Corner glow blob */}
-              <div className="absolute -right-16 -top-16 size-48 rounded-full bg-[#7796ff]/10 blur-[80px]" />
-              <p className="relative z-10 mb-8 text-lg leading-relaxed text-[#798093]">
+            <div className="paper-card relative overflow-hidden rounded-2xl p-8 md:p-10">
+              <p className="relative z-10 mb-8 text-lg leading-relaxed text-[#3d372f]">
                 I&apos;m Ethan (洪毅), a full-stack developer who enjoys turning
                 ideas into polished, production-ready products. My work spans
                 modern web apps, native iOS apps, and AI-powered tools — from
@@ -82,7 +80,7 @@ export default function AboutPage() {
               <div className="relative z-10 flex flex-wrap gap-4">
                 <a
                   href="mailto:rokorec31@gmail.com"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#04050d]/40 px-4 py-2 text-sm text-[#798093] backdrop-blur-md transition-colors hover:text-[#eceef5]"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#1a1712]/20 bg-[#faf6f0] px-4 py-2 text-sm text-[#3d372f] transition-colors hover:border-[#e85d3d] hover:text-[#e85d3d]"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +103,7 @@ export default function AboutPage() {
                   href="https://github.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-[#04050d]/40 px-4 py-2 text-sm text-[#798093] backdrop-blur-md transition-colors hover:text-[#eceef5]"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#1a1712]/20 bg-[#faf6f0] px-4 py-2 text-sm text-[#3d372f] transition-colors hover:border-[#e85d3d] hover:text-[#e85d3d]"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -135,16 +133,16 @@ export default function AboutPage() {
         <div className="mx-auto max-w-4xl px-6">
           <Reveal>
             <div className="mb-14 text-center md:mb-20">
-              <h2 className="text-4xl font-bold tracking-tight md:text-5xl">
-                <span className="gradient-text">Skills</span>
+              <h2 className="font-display text-4xl font-semibold tracking-tight md:text-5xl">
+                <span className="accent-text">Skills</span>
               </h2>
             </div>
           </Reveal>
           <div className="grid gap-5 md:grid-cols-2">
             {skillGroups.map((group, i) => (
               <Reveal key={group.title} delay={(i % 2) * 0.12}>
-                <div className="glass-card group h-full rounded-3xl p-7 transition-all hover:glow-sm">
-                  <h3 className="mb-5 text-lg font-bold tracking-tight">
+                <div className="paper-card group h-full rounded-2xl p-7">
+                  <h3 className="font-display mb-5 text-lg font-semibold tracking-tight">
                     {group.title}
                   </h3>
                   <div className="flex flex-wrap gap-2">

@@ -1,16 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000103;
-  --foreground: #eceef5;
-  --card: #04050d80;
-  --muted-foreground: #798093;
-  --primary: #7796ff;
-  --primary-foreground: #fcfcfc;
-  --accent-purple: #a170eb;
-  --accent-teal: #009498;
-  --border: #ffffff14;
-  --glow: #7796ff33;
+  --background: #faf6f0;
+  --foreground: #1a1712;
+  --card: #fffdf8;
+  --muted-foreground: #6b6157;
+  --primary: #e85d3d;
+  --primary-foreground: #fffdf8;
+  --accent-green: #2f5d50;
+  --border: #1a17121f;
+  --ink: #1a1712;
   --radius: 0.75rem;
 }
 
@@ -21,6 +20,7 @@
   --color-muted: var(--muted-foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-fraunces);
 }
 
 body {
@@ -29,92 +29,31 @@ body {
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
-/* ---------- Aurora background ---------- */
-.aurora-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  overflow: hidden;
-}
-.aurora-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.4;
-  animation: aurora-float 20s ease-in-out infinite;
-}
-.aurora-blob-1 {
-  width: 600px;
-  height: 600px;
-  top: -200px;
-  left: -100px;
-  background: #5471f540;
-}
-.aurora-blob-2 {
-  width: 500px;
-  height: 500px;
-  top: 50%;
-  right: -150px;
-  background: #a170eb33;
-  animation-duration: 25s;
-  animation-delay: -7s;
-}
-.aurora-blob-3 {
-  width: 400px;
-  height: 400px;
-  bottom: -100px;
-  left: 30%;
-  background: #00838826;
-  animation-duration: 30s;
-  animation-delay: -14s;
-}
-@keyframes aurora-float {
-  0%,
-  100% {
-    transform: translate(0) scale(1) rotate(0);
-  }
-  25% {
-    transform: translate(60px, -40px) scale(1.1) rotate(5deg);
-  }
-  50% {
-    transform: translate(-30px, 60px) scale(0.95) rotate(-3deg);
-  }
-  75% {
-    transform: translate(40px, 30px) scale(1.05) rotate(2deg);
-  }
-}
-
-/* ---------- Noise overlay ---------- */
+/* ---------- Paper grain overlay ---------- */
 .noise-overlay::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: 100;
   pointer-events: none;
-  opacity: 0.025;
+  opacity: 0.08;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
 }
 
-/* ---------- Glass card ---------- */
-.glass-card {
+/* ---------- Paper card (editorial: white, ink border, offset shadow) ---------- */
+.paper-card {
   background: var(--card);
-  backdrop-filter: blur(20px) saturate(1.4);
-  -webkit-backdrop-filter: blur(20px) saturate(1.4);
-  border: 1px solid var(--border);
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  border: 1px solid var(--ink);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.glass-card:hover {
-  border-color: #7796ff4d;
-  box-shadow:
-    0 0 0 1px #7796ff1a,
-    0 8px 40px #3b51d314,
-    inset 0 1px #ffffff0d;
+.paper-card:hover {
+  box-shadow: 6px 6px 0 var(--ink);
+  transform: translate(-2px, -2px);
 }
 
-/* ---------- Nav link underline glow ---------- */
+/* ---------- Nav link underline (slides in from left) ---------- */
 .line-glow {
   position: relative;
 }
@@ -125,54 +64,25 @@ body {
   left: 0;
   width: 100%;
   height: 2px;
-  opacity: 0;
-  background: linear-gradient(90deg, transparent, #7796ff, transparent);
-  transition: opacity 0.3s;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .line-glow:hover::after {
-  opacity: 1;
+  transform: scaleX(1);
 }
 
-/* ---------- Glow ---------- */
-.glow-sm {
-  box-shadow:
-    0 0 15px var(--glow),
-    0 0 45px #5471f50d;
-}
-.glow-md {
-  box-shadow:
-    0 0 30px var(--glow),
-    0 0 80px #5471f514;
-}
-.glow-text {
-  text-shadow: 0 0 40px var(--glow);
+/* ---------- Accent text (serif italic, brick orange) ---------- */
+.accent-text {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-style: italic;
+  color: var(--primary);
 }
 
-/* ---------- Animated gradient text ---------- */
-.gradient-text {
-  background: linear-gradient(
-    90deg,
-    #eceef5,
-    #7796ff,
-    #a170eb,
-    #eceef5
-  );
-  background-size: 300%;
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  /* One entrance sweep only: continuous background-position animation on
-     background-clip:text repaints huge text on the main thread every frame. */
-  animation: gradient-shift 6s ease-in-out 1;
-}
-@keyframes gradient-shift {
-  0%,
-  100% {
-    background-position: 0%;
-  }
-  50% {
-    background-position: 100%;
-  }
+/* ---------- Serif display headings ---------- */
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
 }
 
 /* ---------- Skill tag marquee ---------- */
@@ -209,24 +119,6 @@ body {
     black 90%,
     transparent
   );
-}
-
-/* ---------- Particle dots ---------- */
-@keyframes particle-pulse {
-  0%,
-  100% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.3);
-  }
-}
-.particle {
-  position: absolute;
-  border-radius: 50%;
-  animation: particle-pulse 4s ease-in-out infinite;
 }
 
 /* ---------- Scroll indicator ---------- */
@@ -309,14 +201,15 @@ body {
 
 /* ---------- Markdown content ---------- */
 .markdown-body {
-  color: #c3c8d6;
+  color: #3d372f;
   line-height: 1.75;
 }
 .markdown-body h1,
 .markdown-body h2,
 .markdown-body h3 {
-  color: #eceef5;
-  font-weight: 700;
+  color: var(--ink);
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 600;
   letter-spacing: -0.01em;
   margin: 2rem 0 0.75rem;
 }
@@ -347,21 +240,21 @@ body {
   margin: 0.375rem 0;
 }
 .markdown-body a {
-  color: #7796ff;
+  color: var(--primary);
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 .markdown-body code {
-  background: #ffffff0d;
-  border: 1px solid #ffffff14;
+  background: #1a17120d;
+  border: 1px solid #1a17121f;
   border-radius: 0.375rem;
   padding: 0.125rem 0.375rem;
   font-family: var(--font-geist-mono), monospace;
   font-size: 0.875em;
 }
 .markdown-body pre {
-  background: #04050d;
-  border: 1px solid #ffffff14;
+  background: var(--ink);
+  color: #f5efe6;
   border-radius: 0.75rem;
   padding: 1rem 1.25rem;
   overflow-x: auto;
@@ -371,11 +264,12 @@ body {
   background: none;
   border: none;
   padding: 0;
+  color: inherit;
 }
 .markdown-body blockquote {
-  border-left: 3px solid #7796ff66;
+  border-left: 3px solid var(--primary);
   padding-left: 1rem;
-  color: #798093;
+  color: var(--muted-foreground);
   margin: 1rem 0;
 }
 .markdown-body img {
@@ -384,15 +278,11 @@ body {
   margin: 1rem 0;
 }
 .markdown-body hr {
-  border-color: #ffffff14;
+  border-color: #1a17121f;
   margin: 2rem 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .aurora-blob,
-  .gradient-text {
-    animation: none;
-  }
   .fade-in-up {
     animation-duration: 0.01s;
   }

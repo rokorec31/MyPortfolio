@@ -24,18 +24,20 @@ export default function FeaturedProjects() {
     <section className="mx-auto max-w-6xl px-6 pb-24 pt-8">
       <Reveal>
         <div className="mb-8 flex items-end justify-between">
-          <h2 className="text-2xl font-semibold">Featured Projects</h2>
+          <h2 className="font-display text-2xl font-semibold">
+            Featured <span className="accent-text">Projects</span>
+          </h2>
           <Link
             href="/projects"
-            className="text-sm text-[#798093] transition-colors hover:text-white"
+            className="text-sm text-[#6b6157] transition-colors hover:text-[#e85d3d]"
           >
             View all →
           </Link>
         </div>
       </Reveal>
       {loading ? (
-        <div className="flex items-center gap-3 py-12 text-sm text-[#798093]">
-          <div className="size-4 animate-spin rounded-full border-2 border-[#7796ff]/30 border-t-[#7796ff]" />
+        <div className="flex items-center gap-3 py-12 text-sm text-[#6b6157]">
+          <div className="size-4 animate-spin rounded-full border-2 border-[#e85d3d]/30 border-t-[#e85d3d]" />
           Loading...
         </div>
       ) : (

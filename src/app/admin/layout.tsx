@@ -25,8 +25,8 @@ export default function AdminLayout({
   if (loading || !user || !isAdmin) {
     return (
       <div className="flex min-h-[70vh] items-center justify-center">
-        <div className="flex items-center gap-3 text-sm text-[#798093]">
-          <div className="size-4 animate-spin rounded-full border-2 border-[#7796ff]/30 border-t-[#7796ff]" />
+        <div className="flex items-center gap-3 text-sm text-[#6b6157]">
+          <div className="size-4 animate-spin rounded-full border-2 border-[#e85d3d]/30 border-t-[#e85d3d]" />
           Verifying access...
         </div>
       </div>

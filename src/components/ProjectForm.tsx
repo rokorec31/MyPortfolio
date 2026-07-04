@@ -16,7 +16,7 @@ import {
 } from "@/lib/uploadImage";
 
 const inputClass =
-  "w-full rounded-xl border border-white/10 bg-[#04050d]/60 px-4 py-3 text-sm text-[#eceef5] placeholder-[#798093]/50 outline-none backdrop-blur transition-colors focus:border-[#7796ff]/50 focus:ring-2 focus:ring-[#7796ff]/20";
+  "w-full rounded-xl border border-[#1a1712]/15 bg-[#fffdf8] px-4 py-3 text-sm text-[#1a1712] placeholder-[#6b6157]/50 outline-none transition-colors focus:border-[#e85d3d]/50 focus:ring-2 focus:ring-[#e85d3d]/20";
 
 export default function ProjectForm({ project }: { project?: Project }) {
   const router = useRouter();
@@ -106,7 +106,7 @@ export default function ProjectForm({ project }: { project?: Project }) {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid gap-6 md:grid-cols-2">
         <div>
-          <label className="mb-2 block text-sm font-medium text-[#c3c8d6]">
+          <label className="mb-2 block text-sm font-medium text-[#3d372f]">
             專案名稱 *
           </label>
           <input
@@ -118,7 +118,7 @@ export default function ProjectForm({ project }: { project?: Project }) {
           />
         </div>
         <div>
-          <label className="mb-2 block text-sm font-medium text-[#c3c8d6]">
+          <label className="mb-2 block text-sm font-medium text-[#3d372f]">
             年份 *
           </label>
           <input
@@ -133,7 +133,7 @@ export default function ProjectForm({ project }: { project?: Project }) {
       </div>
 
       <div>
-        <label className="mb-2 block text-sm font-medium text-[#c3c8d6]">
+        <label className="mb-2 block text-sm font-medium text-[#3d372f]">
           簡短描述 *
         </label>
         <input
@@ -146,7 +146,7 @@ export default function ProjectForm({ project }: { project?: Project }) {
       </div>
 
       <div>
-        <label className="mb-2 block text-sm font-medium text-[#c3c8d6]">
+        <label className="mb-2 block text-sm font-medium text-[#3d372f]">
           詳細內容 (Markdown)
         </label>
         <textarea
@@ -160,7 +160,7 @@ export default function ProjectForm({ project }: { project?: Project }) {
 
       <div className="grid gap-6 md:grid-cols-2">
         <div>
-          <label className="mb-2 block text-sm font-medium text-[#c3c8d6]">
+          <label className="mb-2 block text-sm font-medium text-[#3d372f]">
             技術標籤(逗號分隔)
           </label>
           <input
@@ -172,17 +172,17 @@ export default function ProjectForm({ project }: { project?: Project }) {
         </div>
         <div>
           <div className="mb-2 flex items-center justify-between">
-            <label className="block text-sm font-medium text-[#c3c8d6]">
+            <label className="block text-sm font-medium text-[#3d372f]">
               專案主圖(選填)
             </label>
-            <div className="flex gap-1 rounded-full border border-white/10 bg-[#04050d]/60 p-0.5 text-xs">
+            <div className="flex gap-1 rounded-full border border-[#1a1712]/15 bg-[#faf6f0]/60 p-0.5 text-xs">
               <button
                 type="button"
                 onClick={() => setImageMode("upload")}
                 className={`rounded-full px-3 py-1 transition-colors ${
                   imageMode === "upload"
-                    ? "bg-[#7796ff]/20 text-[#a8bcff]"
-                    : "text-[#798093] hover:text-white"
+                    ? "bg-[#1a1712]/20 text-[#2f5d50]"
+                    : "text-[#6b6157] hover:text-[#1a1712]"
                 }`}
               >
                 上傳
@@ -192,8 +192,8 @@ export default function ProjectForm({ project }: { project?: Project }) {
                 onClick={() => setImageMode("url")}
                 className={`rounded-full px-3 py-1 transition-colors ${
                   imageMode === "url"
-                    ? "bg-[#7796ff]/20 text-[#a8bcff]"
-                    : "text-[#798093] hover:text-white"
+                    ? "bg-[#1a1712]/20 text-[#2f5d50]"
+                    : "text-[#6b6157] hover:text-[#1a1712]"
                 }`}
               >
                 網址
@@ -214,7 +214,7 @@ export default function ProjectForm({ project }: { project?: Project }) {
                 type="button"
                 onClick={() => fileInputRef.current?.click()}
                 disabled={uploadProgress !== null}
-                className={`${inputClass} flex items-center justify-center gap-2 text-[#798093] hover:border-[#7796ff]/40 hover:text-[#eceef5] disabled:cursor-not-allowed`}
+                className={`${inputClass} flex items-center justify-center gap-2 text-[#6b6157] hover:border-[#e85d3d] hover:text-[#1a1712] disabled:cursor-not-allowed`}
               >
                 {uploadProgress !== null ? (
                   <>上傳中 {uploadProgress}%</>
@@ -225,9 +225,9 @@ export default function ProjectForm({ project }: { project?: Project }) {
                 )}
               </button>
               {uploadProgress !== null && (
-                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-white/10">
+                <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-[#1a1712]/10">
                   <div
-                    className="h-full rounded-full bg-[#7796ff] transition-all duration-300"
+                    className="h-full rounded-full bg-[#1a1712] transition-all duration-300"
                     style={{ width: `${uploadProgress}%` }}
                   />
                 </div>
@@ -250,7 +250,7 @@ export default function ProjectForm({ project }: { project?: Project }) {
 
       {/* Image preview */}
       {imageUrl && (
-        <div className="relative overflow-hidden rounded-xl border border-white/10">
+        <div className="relative overflow-hidden rounded-xl border border-[#1a1712]/15">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={imageUrl}
@@ -263,7 +263,7 @@ export default function ProjectForm({ project }: { project?: Project }) {
               setImageUrl("");
               setImageBlur("");
             }}
-            className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full border border-[#ff6568]/40 bg-black/70 px-3 py-1.5 text-xs font-medium text-[#ff6568] backdrop-blur transition-colors hover:bg-[#ff6568]/20"
+            className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full border border-[#c73a2a]/40 bg-black/70 px-3 py-1.5 text-xs font-medium text-[#c73a2a] backdrop-blur transition-colors hover:bg-[#c73a2a]/20"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -284,20 +284,20 @@ export default function ProjectForm({ project }: { project?: Project }) {
         </div>
       )}
 
-      {error && <p className="text-sm text-[#ff6568]">{error}</p>}
+      {error && <p className="text-sm text-[#c73a2a]">{error}</p>}
 
       <div className="flex gap-4">
         <button
           type="submit"
           disabled={saving}
-          className="glow-sm rounded-full bg-[#7796ff] px-8 py-3 text-sm font-medium text-[#fcfcfc] transition-all duration-300 hover:bg-[#8ba5ff] active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50"
+          className="rounded-full bg-[#1a1712] px-8 py-3 text-sm font-medium text-[#fffdf8] transition-all duration-300 hover:bg-[#e85d3d] active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50"
         >
           {saving ? "儲存中..." : isEdit ? "更新專案" : "新增專案"}
         </button>
         <button
           type="button"
           onClick={() => router.push("/admin")}
-          className="rounded-full border border-white/15 px-8 py-3 text-sm font-medium text-white transition-colors hover:bg-white/10"
+          className="rounded-full border border-[#1a1712]/25 px-8 py-3 text-sm font-medium text-[#1a1712] transition-colors hover:bg-[#1a1712]/5"
         >
           取消
         </button>

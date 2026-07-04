@@ -40,19 +40,18 @@ export default function LoginPage() {
 
   return (
     <div className="flex min-h-[70vh] items-center justify-center px-6">
-      <div className="glass-card fade-in-up relative w-full max-w-md overflow-hidden rounded-3xl p-8 md:p-10">
-        <div className="absolute -right-16 -top-16 size-48 rounded-full bg-[#7796ff]/10 blur-[80px]" />
+      <div className="paper-card fade-in-up relative w-full max-w-md overflow-hidden rounded-2xl p-8 md:p-10">
         <h1 className="relative z-10 text-2xl font-bold tracking-tight">
           Admin Login
         </h1>
-        <p className="relative z-10 mt-2 text-sm text-[#798093]">
+        <p className="relative z-10 mt-2 text-sm text-[#6b6157]">
           Sign in with an authorized Google account to manage projects.
         </p>
 
         <button
           onClick={handleGoogleSignIn}
           disabled={signingIn || loading}
-          className="relative z-10 mt-8 flex w-full items-center justify-center gap-3 rounded-full border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-medium text-white transition-all duration-300 hover:border-[#7796ff]/40 hover:bg-white/10 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50"
+          className="relative z-10 mt-8 flex w-full items-center justify-center gap-3 rounded-full border border-[#1a1712]/25 bg-[#faf6f0] px-6 py-3.5 text-sm font-medium text-[#1a1712] transition-all duration-300 hover:border-[#e85d3d] hover:bg-[#1a1712]/5 active:translate-y-px disabled:cursor-not-allowed disabled:opacity-50"
         >
           {/* Google G logo */}
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden>
@@ -77,7 +76,7 @@ export default function LoginPage() {
         </button>
 
         {error && (
-          <p className="relative z-10 mt-4 text-sm text-[#ff6568]">{error}</p>
+          <p className="relative z-10 mt-4 text-sm text-[#c73a2a]">{error}</p>
         )}
       </div>
     </div>

@@ -10,8 +10,8 @@ export default function EditProjectPage() {
   return (
     <Suspense
       fallback={
-        <div className="flex min-h-[50vh] items-center justify-center text-sm text-[#798093]">
-          <div className="mr-3 size-4 animate-spin rounded-full border-2 border-[#7796ff]/30 border-t-[#7796ff]" />
+        <div className="flex min-h-[50vh] items-center justify-center text-sm text-[#6b6157]">
+          <div className="mr-3 size-4 animate-spin rounded-full border-2 border-[#e85d3d]/30 border-t-[#e85d3d]" />
           Loading project...
         </div>
       }
@@ -48,8 +48,8 @@ function EditProjectContent() {
 
   if (status === "loading") {
     return (
-      <div className="flex min-h-[50vh] items-center justify-center text-sm text-[#798093]">
-        <div className="mr-3 size-4 animate-spin rounded-full border-2 border-[#7796ff]/30 border-t-[#7796ff]" />
+      <div className="flex min-h-[50vh] items-center justify-center text-sm text-[#6b6157]">
+        <div className="mr-3 size-4 animate-spin rounded-full border-2 border-[#e85d3d]/30 border-t-[#e85d3d]" />
         Loading project...
       </div>
     );
@@ -57,7 +57,7 @@ function EditProjectContent() {
 
   if (status === "missing" || !project) {
     return (
-      <div className="mx-auto max-w-3xl px-6 py-16 text-[#798093]">
+      <div className="mx-auto max-w-3xl px-6 py-16 text-[#6b6157]">
         找不到這個專案。
       </div>
     );
@@ -66,7 +66,7 @@ function EditProjectContent() {
   return (
     <div className="mx-auto max-w-3xl px-6 py-16">
       <h1 className="mb-10 text-3xl font-bold tracking-tight">
-        <span className="gradient-text">編輯專案</span>
+        <span className="accent-text">編輯專案</span>
       </h1>
       <ProjectForm project={project} />
     </div>
