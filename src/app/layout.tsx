@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MyPortfolio",
+  title: "Ethan | Portfolio",
   description: "Personal portfolio — projects, experiments, and writing.",
 };
 
@@ -39,7 +39,7 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-1 pt-20">{children}</main>
           <footer className="border-t border-white/10 py-8 text-center text-sm text-neutral-500">
-            © {new Date().getFullYear()} MyPortfolio. All rights reserved.
+            © {new Date().getFullYear()} Ethan. All rights reserved.
           </footer>
         </AuthProvider>
       </body>

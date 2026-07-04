@@ -28,10 +28,10 @@ export default function Navbar() {
       style={{ transform: mounted ? "translateY(0)" : "translateY(-100px)" }}
     >
       <nav
-        className={`mx-auto flex max-w-5xl items-center justify-between rounded-2xl px-6 py-3 transition-all duration-500 ${
+        className={`mx-auto flex max-w-5xl items-center justify-between rounded-2xl border px-6 py-3 transition-all duration-500 ${
           scrolled
-            ? "mx-4 border border-white/10 bg-[#04050d]/70 shadow-lg shadow-black/20 backdrop-blur-xl sm:mx-6 lg:mx-auto"
-            : "bg-transparent"
+            ? "mx-4 border-white/10 bg-[#04050d]/70 shadow-lg shadow-black/20 backdrop-blur-md sm:mx-6 lg:mx-auto"
+            : "border-transparent bg-transparent"
         }`}
       >
         {/* Logo + tagline */}
