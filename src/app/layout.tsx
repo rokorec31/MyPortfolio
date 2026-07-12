@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Fraunces, Noto_Serif_TC } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ScrollHint from "@/components/ScrollHint";
+import Logger from "@/components/Logger";
 import { AuthProvider } from "@/context/AuthContext";
 
 const geistSans = Geist({
@@ -50,6 +51,7 @@ export default function RootLayout({
             © {new Date().getFullYear()} Ethan. All rights reserved.
           </footer>
           <ScrollHint />
+          <Logger />
         </AuthProvider>
       </body>
     </html>

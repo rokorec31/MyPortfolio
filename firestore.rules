@@ -12,6 +12,36 @@ service cloud.firestore {
         && request.auth.token.email_verified == true;
     }
 
+    // Access logs: anyone may append a record (the site is a static export,
+    // so records are written from the client). Reads are admin-only. Create is
+    // shape- and size-constrained to blunt anonymous write abuse.
+    match /logs/{logId} {
+      allow read, delete: if request.auth != null
+        && request.auth.token.email == 'rokorec31@gmail.com'
+        && request.auth.token.email_verified == true;
+      allow create: if request.resource.data.createdAt == request.time
+        && request.resource.data.keys().hasOnly([
+          'ip', 'city', 'region', 'country', 'countryCode',
+          'latitude', 'longitude', 'org', 'isp', 'asn',
+          'referrer', 'userAgent', 'path', 'createdAt'
+        ])
+        && request.resource.data.ip is string
+        && request.resource.data.ip.size() < 64
+        && request.resource.data.latitude is number
+        && request.resource.data.longitude is number
+        && request.resource.data.org is string
+        && request.resource.data.org.size() < 256
+        && request.resource.data.isp is string
+        && request.resource.data.isp.size() < 256
+        && request.resource.data.referrer is string
+        && request.resource.data.referrer.size() < 512
+        && request.resource.data.userAgent is string
+        && request.resource.data.userAgent.size() < 512
+        && request.resource.data.path is string
+        && request.resource.data.path.size() < 512;
+      allow update: if false;
+    }
+
     // Deny everything else by default.
     match /{document=**} {
       allow read, write: if false;
