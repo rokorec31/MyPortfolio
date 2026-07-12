@@ -74,6 +74,12 @@ export default function AdminPage() {
         </div>
         <div className="flex gap-3">
           <Link
+            href="/admin/logs"
+            className="rounded-full border border-[#1a1712]/25 px-5 py-2.5 text-sm font-medium text-[#1a1712] transition-colors hover:bg-[#1a1712]/5"
+          >
+            Logs / 紀錄
+          </Link>
+          <Link
             href="/admin/projects/new"
             className="rounded-full bg-[#1a1712] px-6 py-2.5 text-sm font-medium text-[#fffdf8] transition-all hover:bg-[#e85d3d] active:translate-y-px"
           >
